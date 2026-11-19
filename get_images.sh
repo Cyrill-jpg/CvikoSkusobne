@@ -6,14 +6,14 @@ curl -s $1 |
 	tr "<" "\n" |
 	grep ^img |
        	sed 's/.*src="//' |
-	sed 's/" *alt.*//' |
+	sed 's/".*//' |
 	grep -E "^https|^/" |
 	while read VALUE
 	do
 		if echo $VALUE | grep https > /dev/null
 		then
-			curl -s -O $VALUE
+			curl -O $VALUE
 		else
-			curl -s -O $SERVER$VALUE
+			curl -O $SERVER$VALUE
 		fi
 	done

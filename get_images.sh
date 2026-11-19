@@ -12,8 +12,8 @@ curl -s $1 |
 	do
 		if echo $VALUE | grep https > /dev/null
 		then
-			curl -O $VALUE
+			curl -s -O $VALUE
 		else
-			curl -O $SERVER$VALUE
+			curl -s -O $SERVER$VALUE
 		fi
 	done
